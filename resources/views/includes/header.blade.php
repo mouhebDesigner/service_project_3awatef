@@ -19,7 +19,7 @@
                             </div>
                             <div class="top-bar-text">
                                 <h3>Horaire de travail</h3>
-                                <p>Lun - Ven, 8:00 - 17:00</p>
+                                <p>Lun - Ven 8:00h - 18:00h</p>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="top-bar-text">
                                 <h3>Contacter-nous</h3>
-                                <p>+xxx xx xxx xxx</p>
+                                <p>+216 25 470 729</p>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="top-bar-text">
                                 <h3>Email Nous</h3>
-                                <p>info@example.com</p>
+                                <p>benahmedabdelhamid345@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <a class="btn" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Déconnecter') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -49,7 +49,7 @@ class CommandeController extends Controller
 
         $commande->save();
 
-        return redirect('admin/commandes')->with('accepted', 'La commande a été accepté avec succée');
+        return redirect('admin/commandesVoiture')->with('accepted', 'La commande a été accepté avec succée');
     }
     public function refuserVoiture($commande_id){
         $commande = CommandeVoiture::find($commande_id);
