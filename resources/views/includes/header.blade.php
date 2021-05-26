@@ -62,19 +62,24 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto">
                     @guest
-                    <a href="{{ url('/') }}" class="nav-item nav-link active">Accueil</a>
+                    <a href="{{ url('/') }}" class="nav-item nav-link @if(Request::is('home')) active @endif">Accueil</a>
                     @else 
-                    <a href="{{ url('/home') }}" class="nav-item nav-link active">Accueil</a>
+                    <a href="{{ url('/home') }}" class="nav-item nav-link @if(Request::is('home')) active @endif">Accueil</a>
 
                     @endif
-                    <a href="#catalogue" class="nav-item nav-link">Catalogues</a>
-                    <a href="#service" class="nav-item nav-link">Services</a>
+                    <a href="#catalogue" class="nav-item nav-link @if(Request::is('catalogue')) active @endif">Catalogues</a>
+                    <a href="{{ url('services') }}" class="nav-item nav-link @if(Request::is('services')) active @endif">Services</a>
+                    <a href="{{ url('contacts') }}" class="nav-item nav-link @if(Request::is('contacts')) active @endif">Contacts</a>
                 </div>
                 <div class="ml-auto">
                     @guest
                     <a class="btn btn-login" href="{{ url('login') }}">Connecter</a>
                     <a class="btn " href="{{ url('register') }}">S'inscrire</a>
                     @else 
+                        <a class=" " style="font-weight: bold; color: white" href="{{ url('profile') }}">
+                            {{ Auth::user()->nom  }}
+                            {{ Auth::user()->prenom  }}
+                        </a>
                         <a class="btn" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">

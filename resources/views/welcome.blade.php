@@ -7,9 +7,9 @@
         <div class="carousel-item carousel-item-next carousel-item-left">
             <img src="{{ asset('front/img/carousel-3.jpg')}}" alt="Carousel Image">
             <div class="carousel-caption">
-                <p class="animated fadeInRight">We Are Trusted</p>
-                <h1 class="animated fadeInLeft">For Your Dream Home</h1>
-                <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Get A Quote</a>
+                <p class="animated fadeInRight">Bienvenue a notre site web </p>
+                <h1 class="animated fadeInLeft">Commander un service maintenant</h1>
+                <a class="btn animated fadeInUp" href="{{ url('services') }}">Commander</a>
             </div>
         </div>
     </div>

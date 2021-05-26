@@ -2,11 +2,13 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\CommandeController as CommandeController_admin;
-use App\Http\Controllers\CommandeController as CommandeController_client;
 use App\Http\Controllers\Admin\CatalogueController;
+use App\Http\Controllers\CommandeController as CommandeController_client;
+use App\Http\Controllers\Admin\CommandeController as CommandeController_admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,11 @@ use App\Http\Controllers\Admin\CatalogueController;
 |
 */
 
+Route::get('services', function(){
+    return view('services');
+});
+Route::resource('contacts', ContactController::class); 
+Route::resource('profile', ProfileController::class); 
 Route::get('/', function () {
     return view('welcome');
 });
