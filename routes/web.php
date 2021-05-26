@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\ContactController as ContactController_admin;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -32,6 +33,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::resource('clients', ClientController::class)->only('index', 'destroy');
     Route::resource('catalogues', CatalogueController::class);
+    Route::resource('contacts', ContactController_admin::class);
     Route::resource('services', ServiceController::class);
     Route::get('commandes', [CommandeController_admin::class, 'index']);
     Route::get('commandesVoiture', [CommandeController_admin::class, 'voiture']);
