@@ -90,8 +90,8 @@
           <li class="nav-item">
             <a href="{{ url('admin/commandesVoiture') }}" class="nav-link @if(Request::is('admin/commandesVoiture*')) active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                {{ __('les commandes de voiture') }}
+              <p class="text-wrap">
+                {{ __('Gérer les commandes de voitures') }}
               </p>
             </a>
           </li>

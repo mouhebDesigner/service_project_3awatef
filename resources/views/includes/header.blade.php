@@ -69,18 +69,20 @@
                     @endif
                     <a href="#catalogue" class="nav-item nav-link @if(Request::is('catalogue')) active @endif">Catalogues</a>
                     <a href="{{ url('services') }}" class="nav-item nav-link @if(Request::is('services')) active @endif">Services</a>
+                    <a href="{{ url('commande_choisir') }}" class="nav-item nav-link @if(Request::is('commandes')) active @endif">Commandes</a>
                     <a href="{{ url('contacts') }}" class="nav-item nav-link @if(Request::is('contacts')) active @endif">Contacts</a>
                 </div>
                 <div class="ml-auto">
                     @guest
                     <a class="btn btn-login" href="{{ url('login') }}">Connecter</a>
                     <a class="btn " href="{{ url('register') }}">S'inscrire</a>
-                    @else 
-                        <a class=" " style="font-weight: bold; color: white" href="{{ url('profile') }}">
-                            {{ Auth::user()->nom  }}
-                            {{ Auth::user()->prenom  }}
-                        </a>
-                        <a class="btn" href="{{ route('logout') }}"
+                    @else
+                    <div class="nav-item dropdown show">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> {{ Auth::user()->nom  }}
+                            {{ Auth::user()->prenom  }} </a>
+                        <div class="dropdown-menu ">
+                            <a  class="dropdown-item"  href="{{ url('profile') }}">Modifier profile</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             {{ __('Déconnecter') }}
@@ -89,6 +91,9 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+                        </div>
+                    </div>
+                      
                     @endif
                 </div>
             </div>

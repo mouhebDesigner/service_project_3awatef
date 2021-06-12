@@ -16,7 +16,7 @@
         <div class="container">
             <div class="section-header text-center">
                 <p>Commander service</p>
-                <h4>Remplir la formulaire pour envoyer ton commande</h4>
+                <h4>Remplir la formulaire pour modifier ton commande</h4>
             </div>
             <div class="row">
                 
@@ -25,38 +25,30 @@
                         <div id="success"></div>
                         
                         
-                        <form  action="{{ url('commande_voiture') }}" name="sentMessage" id="contactForm" novalidate="novalidate" method='post'>
+                        <form  action="{{ url('commandes/'.$commande->id) }}" name="sentMessage" id="contactForm" novalidate="novalidate" method='post'>
                             @csrf
-                            <input type="hidden" name="service_id" value="{{ $service_id }}">
+                            @method('put')
+                            <input type="hidden" name="service_id" value="{{ $commande->service->id }}">
                             <div class="control-group mb-2">
-                                <select name="type_lavage" id="">
-                                    <option value="" selected disabled>Choisir type de lavage</option>
-                                    <option value="intérieur">Intérieur</option>
-                                    <option value="extérieur">Extérieur</option>
-                                </select>
-                                @error('type_lavage')
+                                <input type="text" class="form-control" placeholder="Espace" value="{{ $commande->espace }}" required="required" name="espace">
+                                @error('espace')
                                 <p class="help-block text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="control-group mb-2">
-                                <select name="type_voiture" id="">
-                                    <option value="" selected disabled>Choisir type de voiture</option>
-                                    <option value="familiale">Familiale</option>
-                                    <option value="commerciale">Commerciale</option>
-                                </select>
-                                @error('type_voiture')
-                                <p class="help-block text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="control-group mb-2">
-                                <input type="text" class="form-control" placeholder="Adresse" required="required" name="adresse">
+                                <input type="text" class="form-control" placeholder="Adresse" value="{{ $commande->adresse }}" required="required" name="adresse">
                                 @error('adresse')
                                 <p class="help-block text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                           
                             <div class="control-group mb-2">
-                                <input type="date" class="form-control" placeholder="Numéro étage" required="required" name="date">
+                                <input type="text" class="form-control" placeholder="Numéro étage" value="{{ $commande->num_etage }}" required="required" name="num_etage">
+                                @error('num_etage')
+                                <p class="help-block text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="control-group mb-2">
+                                <input type="date" class="form-control" placeholder="Numéro étage" value="{{ $commande->date }}" required="required" name="date">
                                 @error('date')
                                 <p class="help-block text-danger">{{ $message }}</p>
                                 @enderror

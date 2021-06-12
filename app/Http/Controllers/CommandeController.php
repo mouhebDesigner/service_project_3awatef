@@ -14,6 +14,25 @@ class CommandeController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
+    public function choose(){
+
+        return view('commandes.choose');
+    }
+    public function list(){
+
+        $commandes  = Commande::where('user_id', Auth::id())->get();
+
+        return view('commandes.index', compact('commandes'));
+    }
+
+    public function list_voitures(){
+
+        $commandes  = CommandeVoiture::where('user_id', Auth::id())->get();
+
+        return view('commandes.voitures', compact('commandes'));
+    }
+
     public function index($service_id){
         return view('commande', compact('service_id'));
     }
@@ -49,5 +68,25 @@ class CommandeController extends Controller
         $commande->save();
 
         return redirect('/home')->with('success', 'Votre commande a été envoyé avec succée');
+    }
+
+    public function edit($id){
+        
+        $commande = Commande::find($id);
+
+        return view('commandes.edit', compact('commande'));
+    }
+
+    public function update(CommandeRequest $request, $id){
+        $commande = Commande::find($id);
+
+        $commande->espace = $request->espace;
+        $commande->adresse = $request->adresse;
+        $commande->num_etage = $request->num_etage;
+        $commande->date = $request->date;
+
+        $commande->save();
+
+        return redirect('commandes');
     }
 }

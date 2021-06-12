@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Mail\SendMail;
 use App\Models\Commande;
 use Illuminate\Http\Request;
 use App\Models\CommandeVoiture;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class CommandeController extends Controller
 {
@@ -25,14 +28,20 @@ class CommandeController extends Controller
     }
     
     public function accepter($commande_id){
+
+
         $commande = Commande::find($commande_id);
 
         $commande->approuver = 'oui';
 
         $commande->save();
+       
+        Mail::to("mouhebabderrahim@gmail.com")->send(new SendMail());
+       
 
         return redirect('admin/commandes')->with('accepted', 'La commande a été accepté avec succée');
     }
+    
     public function refuser($commande_id){
         $commande = Commande::find($commande_id);
 
